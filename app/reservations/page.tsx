@@ -21,6 +21,7 @@ async function getData(userId: string) {
           flightNumber: true,
           origin: true,
           departure: true,
+          passengers: true,
           airline: true,
           price: true,
           Favorite: {
@@ -79,6 +80,7 @@ export default async function ReservationsRoute() {
                   pathName="/favorites"
                   flightId={item.Flight?.id as string}
                   departure={item.Flight?.departure as string}
+                  passengers={item.Flight?.passengers as string}
                   airline={item.Flight?.airline as string}
                   flightNumber={item.Flight?.flightNumber as string}
                   price={item.Flight?.price as number}

@@ -34,7 +34,7 @@ const Video = () => {
                   loop
                   ref={videoRef}
                 >
-                  <source src="/aiplane2.mp4" type="video/mp4" />
+                  <source src="/airplane.mp4" type="video/mp4" />
                 </video>
               </div>
             </div>

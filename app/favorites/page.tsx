@@ -17,11 +17,17 @@ async function getData(userId: string) {
           flightNumber: true,
           id: true,
           Favorite: true,
+          passengers: true,
           airline: true,
           departure: true,
           price: true,
           destiny: true,
           origin: true,
+          Reservation: {
+            where: {
+              userId: userId ?? undefined,
+            },
+          },
         },
       },
     },
@@ -52,6 +58,7 @@ export default async function FavoriteRoute() {
               key={item.Flight?.id}
               origin={item.Flight?.origin as string}
               destiny={item.Flight?.destiny as string}
+              passengers={item.Flight?.passengers as string}
               pathName="/favorites"
               flightId={item.Flight?.id as string}
               flightNumber={item.Flight?.flightNumber as string}
@@ -60,6 +67,7 @@ export default async function FavoriteRoute() {
               airline={item.Flight?.airline as string}
               departure={item.Flight?.departure as string}
               favoriteId={item.Flight?.Favorite[0].id as string}
+              reservationId={item.Flight?.Reservation[0].id as string}
               isInFavoriteList={
                 (item.Flight?.Favorite.length as number) > 0 ? true : false
               }
