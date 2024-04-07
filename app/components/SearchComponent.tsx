@@ -91,7 +91,7 @@ export function SearchModalComponent() {
           <Search className="bg-primary text-white p-1 h-8 w-8 rounded-full" />
         </div>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-md">
         <form className="gap-4 flex flex-col">
           <input type="hidden" name="origin" value={selectedOriginValue} />
           {step === 1 && (
