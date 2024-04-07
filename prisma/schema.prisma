@@ -1,0 +1,63 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id String @id @unique
+
+  email        String
+  firstName    String
+  lastName     String
+  profileImage String?
+  Flight       Flight[]
+  Favorite     Favorite[]
+  Reservation  Reservation[]
+}
+
+model Flight {
+  id String @id @default(uuid())
+
+  airline      String?
+  origin       String?
+  destiny      String?
+  departure    String?
+  passengers   String?
+  flightNumber String?
+  price        Int?
+  categoryName String?
+  Favorite     Favorite[]
+  Reservation  Reservation[]
+
+  createdAT DateTime @default(now())
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+}
+
+model Favorite {
+  id String @id @default(uuid())
+
+  User   User?   @relation(fields: [userId], references: [id])
+  userId String?
+  Flight   Flight?   @relation(fields: [flightId], references: [id])
+  flightId String?
+
+  createAt DateTime @default(now())
+}
+
+model Reservation {
+  id String @id @default(uuid())
+
+  createdAt DateTime @default(now())
+
+  User   User?   @relation(fields: [userId], references: [id])
+  userId String?
+  Flight   Flight?   @relation(fields: [flightId], references: [id])
+  flightId String?
+}
