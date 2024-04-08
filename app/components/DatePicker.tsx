@@ -21,15 +21,13 @@ interface DatePickerProps {
 export function DatePicker({ selectedDate, onSelectDate }: DatePickerProps) {
   const [date, setDate] = React.useState<Date | undefined>(selectedDate)
 
-  // Update the date state when the selectedDate prop changes
   React.useEffect(() => {
     setDate(selectedDate)
   }, [selectedDate])
 
-  // Function to handle date selection
   const handleSelectDate: SelectSingleEventHandler = (selected: Date) => {
     setDate(selected)
-    onSelectDate(selected) // Pass the selected date to the parent component
+    onSelectDate(selected)
   }
 
   return (
@@ -50,8 +48,7 @@ export function DatePicker({ selectedDate, onSelectDate }: DatePickerProps) {
         <Calendar
           mode="single"
           selected={date}
-          onSelect={(day: Date | undefined) => handleSelectDate(day as Date)} // Ensure that the type matches
-          initialFocus
+          onSelect={(day: Date | undefined) => handleSelectDate(day as Date)}
           fromDate={new Date()}
         />
       </PopoverContent>

@@ -39,7 +39,7 @@ export function ListingCard({
         <p>No de vuelo: {flightNumber}</p>
 
         {userId && (
-          <div className="z-10 absolute -top-2 -right-12">
+          <div className="z-10 absolute -top-2 left-64">
             {isInFavoriteList ? (
               <form action={DeleteFromFavorite}>
                 <input type="hidden" name="favoriteId" value={favoriteId} />

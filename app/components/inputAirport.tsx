@@ -38,7 +38,7 @@ const AirportInput: React.FC<AirportInputProps> = ({ onAirportSelected }) => {
   const [suggestions, setSuggestions] = useState<Airport[]>([])
 
   const inputProps = {
-    placeholder: 'Escribe o codigo aeropuerto',
+    placeholder: 'Nombre o codigo aeropuerto',
     value,
     onChange: (_event: React.FormEvent, { newValue }: ChangeEvent) => {
       setValue(newValue)
