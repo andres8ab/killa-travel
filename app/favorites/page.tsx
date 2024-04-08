@@ -67,7 +67,7 @@ export default async function FavoriteRoute() {
               airline={item.Flight?.airline as string}
               departure={item.Flight?.departure as string}
               favoriteId={item.Flight?.Favorite[0].id as string}
-              reservationId={item.Flight?.Reservation[0].id as string}
+              reservationId={item.Flight?.Reservation[0]?.id as string}
               isInFavoriteList={
                 (item.Flight?.Favorite.length as number) > 0 ? true : false
               }
