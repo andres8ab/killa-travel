@@ -19,34 +19,43 @@ npm run dev
 - Buscador con pasos multiples
 - Url desplegada en Vercel
 
-## Diagrama base de datos Postgresql
+### Diagrama base de datos Postgresql
 
-  +---------------+              +-----------------+              +---------------+
-  |     User      |              |     Flight      |              |    Favorite    |
-  +---------------+              +-----------------+              +---------------+
-  | id: String    | *          * | id: String      |   *       *  | id: String    |
-  | email: String |------------->| airline: String |<------------>| userId: String|
-  | firstName: Str|              | origin: String  |              | flightId: Str |
-  | lastName: Str |              | destiny: String |              | createAt: Date|
-  | profileImg: Str|             | departure: Str  |              +---------------+
-  +---------------+              | passengers: Str |  
-          |                      | flightNumber: S |  
-          |                      | price: Int      |  
-          |                      | categoryName: S |  
-          |                       +-----------------+  
-          |                            
-          |  
-          |  
-          |                En base de datos podemos observar la relacion one-to-many
-          *                Por ejemplo, un usuario puede tener varias reservaciones.
-  +---------------+  
-  |   Reservation |  
-  +---------------+  
-  | id: String    |  
-  | createdAt: Date|  
-  | userId: String|  
-  | flightId: Str |  
-  +---------------+
+#### User
+- id: String (Primary Key)
+- email: String
+- firstName: String
+- lastName: String
+- profileImage: String?
+
+#### Flight
+- id: String (Primary Key)
+- airline: String
+- origin: String
+- destiny: String
+- departure: String
+- passengers: String
+- flightNumber: String
+- price: Int
+- categoryName: String
+- createdAT: DateTime
+- userId: String (Foreign Key)
+
+#### Favorite
+- id: String (Primary Key)
+- userId: String (Foreign Key)
+- flightId: String (Foreign Key)
+- createAt: DateTime
+
+#### Reservation
+- id: String (Primary Key)
+- createdAt: DateTime
+- userId: String (Foreign Key)
+- flightId: String (Foreign Key)
+
+En esta base de datos podemos observar la relacion one-to-many.
+Por ejemplo, un usuario puede tener varias reservaciones.
+ 
 
   ## Vercel URL con servidor gratuito
 
