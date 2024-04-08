@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Aplicación de reserva de vuelos usando Next.js 14, Kinde, Supabase, Prisma y Shadcn UI
 
-## Getting Started
+## Instalacion
 
-First, run the development server:
+npm install
 
-```bash
+Segundo, iniciar el development server:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Caracteristicas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js 14 App Router
+- Autenticación con Kinde
+- Base de datos relacional de Supabase
+- Conexion con Prisma ORM
+- Stilos con Tailwind CSS
+- Componentes con Shadcn UI
+- Buscador con pasos multiples
+- Url desplegada en Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Diagrama base de datos Postgresql
 
-## Learn More
+  +---------------+              +-----------------+              +---------------+
+  |     User      |              |     Flight      |              |    Favorite    |
+  +---------------+              +-----------------+              +---------------+
+  | id: String    | *          * | id: String      |   *       *  | id: String    |
+  | email: String |------------->| airline: String |<------------>| userId: String|
+  | firstName: Str|              | origin: String  |              | flightId: Str |
+  | lastName: Str |              | destiny: String |              | createAt: Date|
+  | profileImg: Str|             | departure: Str  |              +---------------+
+  +---------------+              | passengers: Str |  
+          |                      | flightNumber: S |  
+          |                      | price: Int      |  
+          |                      | categoryName: S |  
+          |                       +-----------------+  
+          |                            
+          |  
+          |  
+          |                En base de datos podemos observar la relacion one-to-many
+          *                Por ejemplo, un usuario puede tener varias reservaciones.
+  +---------------+  
+  |   Reservation |  
+  +---------------+  
+  | id: String    |  
+  | createdAt: Date|  
+  | userId: String|  
+  | flightId: Str |  
+  +---------------+
 
-To learn more about Next.js, take a look at the following resources:
+  ## Vercel URL con servidor gratuito
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  https://killa-travel.vercel.app/ 
